@@ -155,10 +155,6 @@ contract stores is rates, ERC20("WinPlace", "WPC") {
         return _products;
     }
 
-    function _randomNumber(uint32 _storage_life) private view returns (uint32) {
-        return uint32(( uint256( keccak256(abi.encodePacked(block.timestamp))) % ((_storage_life * 2) * 1 days)) / 1 days);
-    }
-
     function _incProduct(string memory _title, uint256 _cost_wei, uint256 _amount, uint256 _production_date, uint32 _storage_life) private {
         uint256 _hashProduct = _generateHash(_title, _production_date, _storage_life, _cost_wei);
         Roles _currentRole = currentRole[msg.sender];
